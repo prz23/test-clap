@@ -1,3 +1,8 @@
+mod config;
+mod types;
+
+
 fn main() {
-    println!("Hello, world!");
+    let config = config::Config::from_args();
+    println!("config {config:?}");
 }
