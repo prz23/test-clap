@@ -1,10 +1,9 @@
-use clap::{arg, Arg, Args, Command};
 use crate::types::Network;
+use clap::arg;
 use std::net::SocketAddr;
 
 use clap::builder::TypedValueParser as _;
 use clap::Parser;
-
 
 #[derive(Debug, Clone, Parser)]
 pub struct Config {
@@ -16,7 +15,7 @@ pub struct Config {
             .map(|s| s.parse::<Network>().unwrap()),
     )]
     pub network_type: Network,
-    #[arg(long, help = "bitcond rpc address" )]
+    #[arg(long, help = "bitcond rpc address")]
     pub daemon_rpc_addr: SocketAddr,
     #[arg(long)]
     pub cookie: Option<String>,
@@ -38,7 +37,6 @@ pub struct Config {
 
 impl Config {
     pub fn from_args() -> Config {
-        let args = Config::parse();
-        args
+        Config::parse()
     }
 }
